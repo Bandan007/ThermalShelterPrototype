@@ -224,10 +224,20 @@ async function selectLocation(lat, lon) {
             `Climate: ${currentSelection.climateClass}`;
     }
 
+
     await fetchNASAHumidity(lat, lon);
+    showLocationMessage();
 }
 
+function showLocationMessage() {
+    const message = document.getElementById("location-message");
 
+    message.style.display = "none";
+
+    setTimeout(() => {
+        message.style.display = "block";
+    }, 5000);
+}
 /* =========================
    NASA POWER RH2M
 ========================= */
