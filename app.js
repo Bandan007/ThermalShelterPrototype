@@ -226,18 +226,8 @@ async function selectLocation(lat, lon) {
 
 
     await fetchNASAHumidity(lat, lon);
-    showLocationMessage();
 }
 
-function showLocationMessage() {
-    const message = document.getElementById("location-message");
-
-    message.style.display = "none";
-
-    setTimeout(() => {
-        message.style.display = "block";
-    }, 5000);
-}
 /* =========================
    NASA POWER RH2M
 ========================= */
@@ -302,7 +292,7 @@ async function fetchNASAHumidity(lat, lon) {
         const timeout =
             setTimeout(
                 () => controller.abort(),
-                10000
+                1000000
             );
 
         const response =
