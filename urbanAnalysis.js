@@ -1332,7 +1332,7 @@ window.selectLocation =
         if (climateDisplay) {
 
             climateDisplay.innerText =
-                "Loading climate + surroundings...";
+                "Loading climate + surroundings... <br> <font size=1>this might take upto 3 minuites, please be patient</font>";
         }
 
 
