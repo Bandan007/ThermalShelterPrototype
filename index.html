@@ -93,12 +93,14 @@
         <label>Wind Speed:</label>
         <input type="text" id="wind-input" readonly>
     </div>
-<p>It can take upto 3 minutes to fetch the values, please be patient</p>
+
     <div class="input-group">
         <label>Building Density:</label>
         <input type="text" id="density-input" readonly>
     </div>
-
+<p id="location-message" style="display: none;">
+    Location selected. Fetching climate data might take upto 3 minutes, please be patient.
+</p>
     <div id="climate-class-display" class="highlight-box">
         Select a point on the map
     </div>
