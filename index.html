@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thermal Shelter Design System</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header class="header">
+        <h1>Area-Specific Thermal Shelter Design System</h1>
+        <span class="badge">Smart India Hackathon</span>
+    </header>
+
+    <div class="dashboard-container">
+        <!-- Sidebar Controls -->
+        <aside class="sidebar">
+            <div class="card">
+                <h2>Demo Locations</h2>
+                <select id="demo-location-select" onchange="loadDemoLocation()">
+                    <option value="">-- Select Location --</option>
+                </select>
+            </div>
+          <div class="card">
+    <h2>Location Input</h2>
+
+    <p class="input-help">
+        Enter PIN Code OR Latitude & Longitude
+    </p>
+
+    <div class="input-group">
+        <label>PIN Code:</label>
+        <input
+            type="text"
+            id="pincode-input"
+            placeholder="e.g. 712201"
+            maxlength="6"
+        >
+    </div>
+
+    <div class="or-divider">OR</div>
+
+    <div class="input-group">
+        <label>Latitude:</label>
+        <input
+            type="number"
+            id="manual-lat-input"
+            placeholder="e.g. 22.5726"
+            step="any"
+        >
+    </div>
+
+    <div class="input-group">
+        <label>Longitude:</label>
+        <input
+            type="number"
+            id="manual-lon-input"
+            placeholder="e.g. 88.3639"
+            step="any"
+        >
+    </div>
+
+    <button class="secondary-btn" onclick="findLocation()">
+        FIND LOCATION
+    </button>
+          </div>
+
+            <div class="card">
+    <h2>Location & Climate Data</h2>
+
+    <div class="input-group">
+        <label>Lat:</label>
+        <input type="number" id="lat-input" readonly>
+    </div>
+
+    <div class="input-group">
+        <label>Lon:</label>
+        <input type="number" id="lon-input" readonly>
+    </div>
+
+    <div class="input-group">
+        <label>Temp (°C):</label>
+        <input type="number" id="temp-input">
+    </div>
+
+    <div class="input-group">
+        <label>Humidity (%):</label>
+        <input type="number" id="hum-input" readonly>
+    </div>
+
+    <div class="input-group">
+        <label>Wind Speed:</label>
+        <input type="text" id="wind-input" readonly>
+    </div>
+
+    <div class="input-group">
+        <label>Building Density:</label>
+        <input type="text" id="density-input" readonly>
+    </div>
+
+    <div id="climate-class-display" class="highlight-box">
+        Select a point on the map
+    </div>
+            </div>
+
+            <div class="card">
+                <h2>Available Materials</h2>
+                <div class="checkbox-grid" id="material-checkboxes"></div>
+            </div>
+
+            <button class="primary-btn" onclick="runOptimization()">GENERATE DESIGN</button>
+        </aside>
+
+        <!-- Map -->
+        <main class="map-container">
+            <div id="map"></div>
+        </main>
+
+        <!-- Results Panel -->
+        <aside class="results-panel">
+            <div id="recommendation-card" class="card hidden">
+                <h2>OPTIMAL DESIGN</h2>
+                <div class="result-grid">
+                    <div><strong>Climate:</strong> <span id="res-climate"></span></div>
+                    <div><strong>Comfort Score:</strong> <span id="res-comfort"></span>/100</div>
+                    <div><strong>Wall:</strong> <span id="res-wall"></span></div>
+                    <div><strong>Roof:</strong> <span id="res-roof"></span></div>
+                </div>
+            </div>
+
+            <div id="comparison-card" class="card hidden">
+                <h2>COMPARISON</h2>
+                <canvas id="comparisonChart" width="100" height="80"></canvas>
+            </div>
+        </aside>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Data Files -->
+    <script src="data/demoLocations.js"></script>
+    <script src="data/materials.js"></script>
+    <script src="data/india_temperature.js"></script>
+    
+    <!-- Application Logic -->
+    <script src=thermalModel.js></script>
+    <script src="app.js"></script>
+  <script src="urbanAnalysis.js"></script>
+</body>
+</html>
