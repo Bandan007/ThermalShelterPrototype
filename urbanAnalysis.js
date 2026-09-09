@@ -1331,8 +1331,8 @@ window.selectLocation =
 
         if (climateDisplay) {
 
-            climateDisplay.inneHTML =
-                "Loading climate + surroundings...<br> this process might take upto 3 minutes, please be patient";
+            climateDisplay.innerText =
+                "Loading climate + surroundings... this process might take upto 3 minutes, please be patient";
         }
 
 
